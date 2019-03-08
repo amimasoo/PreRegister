@@ -43,4 +43,5 @@ Auth::routes();
 Route::get('/student/list','UserController@student_listView');
 Route::get('/student/edit/{user}','UserController@edit');
 Route::post('/student/edit/{user}','UserController@update');
+Route::get('/student/delete/{user}','UserController@destroy');
 Auth::routes();

@@ -98,9 +98,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        Session::flash('message', '.دانشجو '.$user->firstName.' '.$user->lastName.' با موفقیت حذف شد');
+        Session::flash('alert-class', 'alert-success');
+        $user->delete();
+
+        return back();
     }
 
     public function student_listView(){

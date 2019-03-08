@@ -53,8 +53,8 @@
                         <td>
                             <span style="font-size: 23px; color: black;">
                                 <a class="deleteCourse" href="delete/{{$course->id}}" data-courseid="{{$course->id}}" id="deleteID" data-target="#myModal" data-toggle="modal" style="color: black ;">
-                                <i class="far fa-trash-alt"></i>
-                              </a>
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
                              </span>
                         </td>
                     </tr>

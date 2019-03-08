@@ -18,7 +18,9 @@
         @endphp
         <input id="myInput" class="container form-control" type="text" placeholder="جستجو کنید ..." style="direction: rtl">
         <br>
-
+        @if(Session::has('message'))
+            <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+        @endif
         <table  class="table table-striped table-responsive-xl table-bordered text-center" style="box-shadow: 5px 10px 35px #3e3e3e; text-align: right; direction: rtl">
             <thead class="table-dark ">
             <tr>
@@ -67,7 +69,7 @@
                     </td>
                     <td>
                         <span style="font-size: 23px; color: black;">
-                            <a href="" style="color: black ;">
+                            <a class="deleteStudent" data-studentid="{{$student->id}}" href="delete/{{$student->id}}" id="deleteID" data-target="#myModal" data-toggle="modal" style="color: black ;">
                                 <i class="far fa-trash-alt"></i>
                             </a>
                         </span>
@@ -81,28 +83,41 @@
 
             <div class="pagination justify-content-center">{{ $students->links() }}</div>
 
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="float: right">حذف دانشجو</h5>
+                        <button type="button" class="close" data-dismiss="modal" style="float: left;">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" style="text-align: right">
+                        آیا از حذف کردن این دانشجو مطمئن هستید؟
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        {{--<button href="delete/{{$course->id}}" type="button" class="btn btn-success btn-link" data-dismiss="modal">بله</button>--}}
+                        <a href="" id="modalDeleteButton" class="btn waves-effect btn-block btn-success text-white">بله</a><br>
+                        <button type="button" class="btn btn-block btn-danger waves-effect" data-dismiss="modal">خیر</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    {{--<a href="mailto:amirreza1751@gmail.com?subject=Hello%20Again" target="_top">send Email</a>--}}
-
-            {{--<div class="container">--}}
-                {{--@foreach ($users as $user)--}}
-
-                    {{--<table class="table">--}}
-                        {{--<thead></thead>--}}
-                        {{--<tbody>--}}
-                        {{--<tr>--}}
-                            {{--<td>{{ $user->firstname }}</td>--}}
-                            {{--<td>{{ $user->lastname }}</td>--}}
-                            {{--<td>{{ $user->student_id }}</td>--}}
-                            {{--<td>{{ $user->student_id }}</td>--}}
-                            {{--<td>{{ $user->dept_id }}</td>--}}
-                        {{--</tr>--}}
-                        {{--</tbody>--}}
-                    {{--</table>--}}
-                {{--@endforeach--}}
-            {{--</div>--}}
-
-            {{--<div style="margin-left: 40%"> {{ $users->links() }}</div>--}}
+    <script>
+        $(document).on('click','.deleteStudent',function(){
+            var studentID = $(this).attr('data-studentid');
+            var studentIDhref = "delete/"+ studentID;
+            $('#modalDeleteButton').attr("href", studentIDhref);
+        });
+    </script>
 
 @endsection
