@@ -81,8 +81,8 @@
 
                                     @if ($errors->has('courseName'))
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('courseName') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('courseName') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                                 <label for="courseName" class="col-md-4 col-form-label text-md-right" style="float: right;text-align: right">{{ __('نام') }}</label>
@@ -94,8 +94,8 @@
 
                                     @if ($errors->has('courseCode'))
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('courseCode') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('courseCode') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                                 <label for="courseCode" class="col-md-4 col-form-label text-md-right" style="float: right;text-align: right">{{ __('کد درس') }}</label>
@@ -107,8 +107,8 @@
 
                                     @if ($errors->has('courseUnit'))
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('courseUnit') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('courseUnit') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                                 <label for="courseUnit" class="col-md-4 col-form-label text-md-right" style="float: right;text-align: right">{{ __('واحد درس') }}</label>

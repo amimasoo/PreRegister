@@ -118,15 +118,7 @@ class CourseController extends Controller
     }
 
     public function course_listView(){
-     //   $course=Course::all();
-//        return $course;
         return view('course.course_list');
     }
-
-//    public function pagination(){
-//
-//        $courses = DB::table('course')->paginate(5);
-//        return view('course_list',['course' => $courses]);
-//    }
 }
 
