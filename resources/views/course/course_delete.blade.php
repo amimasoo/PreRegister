@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @php header("location:course.course_list.blade.php");
-    @endphp
+    {{--@php header("location:course.course_list.blade.php");--}}
+    {{--@endphp--}}
 
     @endsection

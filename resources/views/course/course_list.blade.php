@@ -11,6 +11,9 @@
                     @endphp
             <input id="myInput" class="form-control container" type="text" placeholder=" جستجو کنید ..." style="direction: rtl">
             <br>
+            @if(Session::has('message'))
+                <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
             <table class="table table-striped table-responsive-xl table-bordered text-center" style="box-shadow: 5px 10px 35px #3e3e3e; text-align: right; direction: rtl">
                 <thead class="table-dark">
                 <tr>
@@ -38,10 +41,6 @@
                         <td>{{$course->courseType}}</td>
                         <td>{{$course->courseOccupied}}</td>
                         <td>
-                            {{--<button type="button" class="btn btn-outline-primary">مشاهده اطلاعات</button>--}}
-                            {{--<button type="button" class="btn btn-outline-success">ویرایش</button>--}}
-                            {{--<button type="button" onclick="location.href='delete/{{ $row }}';" class="btn btn-outline-danger">حذف</button>--}}
-                            {{--<a href="delete/{{ $row }}">Delete</a>--}}
                             <span style="font-size: 23px; color: black;">
                               <a href="" style="color: black ;">
                                 <i class="far fa-address-card"></i>
@@ -57,7 +56,7 @@
                         </td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                                <a href="delete/{{$course->id}}" id="deleteID" data-target="#myModal" data-toggle="modal" style="color: black ;">
+                                <a class="deleteCourse" href="delete/{{$course->id}}" data-courseid="{{$course->id}}" id="deleteID" data-target="#myModal" data-toggle="modal" style="color: black ;">
                                 <i class="far fa-trash-alt"></i>
                               </a>
                              </span>
@@ -89,8 +88,8 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         {{--<button href="delete/{{$course->id}}" type="button" class="btn btn-success btn-link" data-dismiss="modal">بله</button>--}}
-                        <a href="delete/{{$course->id}}" class="btn btn-success text-white">بله</a>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">خیر</button>
+                        <a href="" id="modalDeleteButton" class="btn waves-effect btn-block btn-success text-white">بله</a><br>
+                        <button type="button" class="btn btn-block btn-danger waves-effect" data-dismiss="modal">خیر</button>
                     </div>
 
                 </div>
@@ -106,19 +105,13 @@
                 });
             });
         });
-        
-        function sendID() {
 
-        }
+        $(document).on('click','.deleteCourse',function(){
+            var courseID=$(this).attr('data-courseid');
+            var courseIDhref = "delete/"+ courseID;
+            $('#modalDeleteButton').attr("href", courseIDhref);
+        });
     </script>
 
 @endsection
-{{--@foreach($course as $row)--}}
-    {{--<tr>--}}
-        {{--<td>{{$row['course_name']}}</td>--}}
-        {{--<td>{{$row['course_code']}}</td>--}}
-        {{--<td>{{$row['course_unit']}}</td>--}}
-        {{--<td>{{$row['course_type']}}</td>--}}
-        {{--<td>{{$row['dept_id']}}</td>--}}
-    {{--</tr>--}}
-{{--@endforeach--}}
+

@@ -100,13 +100,12 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-//      DB::table('course')->delete();
-        $course->delete();
-        return back();
-    }
+        Session::flash('message', '.درس '.$course->courseName.' با موفقیت حذف شد');
 
-    public function destroyView(){
-        return view('course.course_delete');
+        Session::flash('alert-class', 'alert-success');
+        $course->delete();
+
+        return back();
     }
 
     public function course_formView(){
