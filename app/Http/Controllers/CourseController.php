@@ -42,7 +42,8 @@ class CourseController extends Controller
        $request->validate([
             'courseCode' => 'required|unique:course',
         ]);
-        return Course::create([
+
+        Course::create([
             'courseName' => $request['courseName'],
             'courseCode' => $request['courseCode'],
             'courseUnit' => $request['courseUnit'],
@@ -50,6 +51,11 @@ class CourseController extends Controller
             'deptID' => $request['deptID'],
             'courseOccupied'=>$request['courseOccupied'],
         ]);
+
+        Session::flash('message', '.درس '.$request['courseName'].' با موفقیت اضافه شد');
+        Session::flash('alert-class', 'alert-success');
+        return back();
+
     }
 
     /**
@@ -101,7 +107,6 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         Session::flash('message', '.درس '.$course->courseName.' با موفقیت حذف شد');
-
         Session::flash('alert-class', 'alert-success');
         $course->delete();
 

@@ -34,20 +34,13 @@ Route::get('/course/add','CourseController@course_formView' );
 
 
 Route::get('/course/list','CourseController@course_listView');
-//Route::get('/course/list','CourseController@pagination');
 Route::get('/course/edit/{course}','CourseController@edit');
 Route::post('/course/edit/{course}','CourseController@update');
 Route::get('/course/delete/{course}','CourseController@destroy');
-Route::post('/course/delete/{course}','CourseController@destroy');
 Auth::routes();
+
 
 Route::get('/student/list','UserController@student_listView');
 Route::get('/student/edit/{user}','UserController@edit');
 Route::post('/student/edit/{user}','UserController@update');
-//Route::get('/student/list','UserController@pagination');
 Auth::routes();
-
-//
-//Route::get('/course/delete/{course_id}',function ($course_id){
-//    return \Illuminate\Support\Facades\DB::table('course')->$course_id;
-//});

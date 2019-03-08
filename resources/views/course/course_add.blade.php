@@ -7,6 +7,9 @@
             <div class="card border-secondary">
                 <div class="card-header bg-primary text-white" style="float: right; text-align: right">اضافه کردن درس جدید</div>
                 <div class="card-body" style="float: right; text-align: right">
+                    @if(Session::has('message'))
+                        <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                    @endif
                     <form method="post" action="">
                         @csrf
                         <div class="form-group row">
