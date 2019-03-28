@@ -45,3 +45,5 @@ Route::get('/student/edit/{user}','UserController@edit');
 Route::post('/student/edit/{user}','UserController@update');
 Route::get('/student/delete/{user}','UserController@destroy');
 Auth::routes();
+
+Route::get('/availableCourses','StudentCourseController@availableCourseView');

@@ -82,4 +82,8 @@ class StudentCourseController extends Controller
     {
         //
     }
+
+    public function availableCourseView(){
+        return view('availableCourses.availableCourses');
+    }
 }
