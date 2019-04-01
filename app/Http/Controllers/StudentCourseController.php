@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\StudentCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentCourseController extends Controller
 {
@@ -35,7 +37,7 @@ class StudentCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -85,5 +87,15 @@ class StudentCourseController extends Controller
 
     public function availableCourseView(){
         return view('availableCourses.availableCourses');
+    }
+
+    public function insertSelectedCourse(Request $request, StudentCourse $studentCourse){
+       $request = $request->all();
+//       return $request['courseTaken'][0];
+//       $studentID = Auth::user();
+//       return $studentID['id'];
+             StudentCourse::create([
+                'courseID' => $request['courseTaken'][0],
+            ]);
     }
 }

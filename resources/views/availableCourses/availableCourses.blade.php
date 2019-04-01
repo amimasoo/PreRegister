@@ -10,49 +10,60 @@
         @if(Session::has('message'))
             <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
         @endif
-        <table class="table table-striped table-responsive-xl table-bordered text-center" style="box-shadow: 5px 10px 35px #3e3e3e; text-align: right; direction: rtl">
-            <thead class="table-dark">
-            <tr>
-                <th scope="row">ردیف</th>
-                <th >نام درس</th>
-                <th>کد درس</th>
-                <th>واحد درس</th>
-                <th>گروه درس</th>
-                <th>نوع درس</th>
-                <th>تعداد اخذ</th>
-                <th>اخذ/حذف</th>
-            </tr>
-            </thead>
-            <tbody id="myTable">
 
-            @foreach($courses as $course)
+        <form action="/availableCourses" method="post">
+            @csrf
+            <div class="container form-group">
+                <div class="col-md-4" style="margin: 0 auto;">
+                    <button type="submit" class="btn btn-block btn-outline-primary">
+                        {{ __('ثبت نام دروس انتخاب شده') }}
+                    </button>
+                </div>
+            </div>
+
+            <table class="table table-striped table-responsive-xl table-bordered text-center" style="box-shadow: 5px 10px 35px #3e3e3e; text-align: right; direction: rtl">
+                <thead class="table-dark">
                 <tr>
-                    <td>{{++$loop->index}}</td>
-                    <td>{{$course->courseName}}</td>
-                    <td>{{$course->courseCode}}</td>
-                    <td>{{$course->courseUnit}}</td>
-                    <td>{{$course->deptID}}</td>
-                    <td>{{$course->courseType}}</td>
-                    <td>{{$course->courseOccupied}}</td>
-                    <td>
-                        <div class="checkbox">
-                            <lable><input type="checkbox" class="checkbox" value="1"></lable>
-                        </div>
-                    </td>
+                    <th scope="row">ردیف</th>
+                    <th >نام درس</th>
+                    <th>کد درس</th>
+                    <th>واحد درس</th>
+                    <th>گروه درس</th>
+                    <th>نوع درس</th>
+                    <th>تعداد اخذ</th>
+                    <th>اخذ/حذف</th>
                 </tr>
-            @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody id="myTable">
 
-    </div>
-    <div class="container form-group">
-        <div class="col-md-4" style="margin: 0 auto;">
-            <button type="submit" class="btn btn-block btn-outline-primary">
-                {{ __('ثبت نام دروس انتخاب شده') }}
-            </button>
+                @foreach($courses as $course)
+                    <tr>
+                        <td>{{++$loop->index}}</td>
+                        <td>{{$course->courseName}}</td>
+                        <td>{{$course->courseCode}}</td>
+                        <td>{{$course->courseUnit}}</td>
+                        <td>{{$course->deptID}}</td>
+                        <td>{{$course->courseType}}</td>
+                        <td>{{$course->courseOccupied}}</td>
+                        <td>
+                            <div class="checkbox">
+                                <input type="checkbox" name="courseTaken[]" class="checkbox" value="{{$course->id}}">
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+        <div class="container form-group">
+            <div class="col-md-4" style="margin: 0 auto;">
+                <button type="submit" class="btn btn-block btn-outline-primary">
+                    {{ __('ثبت نام دروس انتخاب شده') }}
+                </button>
+            </div>
         </div>
+        </form>
     </div>
-
     <script>
         $(document).ready(function(){
             $("#myInput").on("keyup", function() {
@@ -61,12 +72,6 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
-        });
-
-        $(document).on('click','.deleteCourse',function(){
-            var courseID=$(this).attr('data-courseid');
-            var courseIDhref = "delete/"+ courseID;
-            $('#modalDeleteButton').attr("href", courseIDhref);
         });
     </script>
 
