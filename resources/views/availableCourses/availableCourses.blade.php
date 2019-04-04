@@ -7,9 +7,10 @@
         @endphp
         <input id="myInput" class="form-control container" type="text" placeholder=" جستجو کنید ..." style="direction: rtl">
         <br>
-        @if(Session::has('message'))
-            <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
-        @endif
+
+            @if(Session::has('message'))
+                <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
 
         <form action="/availableCourses" method="post">
             @csrf

@@ -6,6 +6,7 @@ use App\Course;
 use App\StudentCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class StudentCourseController extends Controller
 {
@@ -82,20 +83,29 @@ class StudentCourseController extends Controller
      */
     public function destroy(StudentCourse $studentCourse)
     {
-        //
+
     }
 
     public function availableCourseView(){
         return view('availableCourses.availableCourses');
     }
 
-    public function insertSelectedCourse(Request $request, StudentCourse $studentCourse){
-       $request = $request->all();
-//       return $request['courseTaken'][0];
-//       $studentID = Auth::user();
-//       return $studentID['id'];
-             StudentCourse::create([
-                'courseID' => $request['courseTaken'][0],
+    public function insertSelectedCourse(Request $request){
+
+        $request = $request->all();
+//       return $request['courseTaken'];
+
+        $studentID = Auth::user();
+        foreach($request['courseTaken'] as $req) {
+
+            StudentCourse::create([
+                'courseID' => $req,
+                'studentID' => $studentID['id'],
             ]);
+        }
+        Session::flash('message', '.دروس مورد نظر با موفقیت اخذ شدند');
+        Session::flash('alert-class', 'alert-success');
+
+        return back();
     }
 }

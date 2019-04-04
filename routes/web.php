@@ -47,4 +47,7 @@ Route::get('/student/delete/{user}','UserController@destroy');
 Auth::routes();
 
 Route::get('/availableCourses','StudentCourseController@availableCourseView');
+
 Route::post('/availableCourses','StudentCourseController@insertSelectedCourse');
+
+
