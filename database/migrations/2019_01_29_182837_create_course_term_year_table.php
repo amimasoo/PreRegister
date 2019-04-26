@@ -18,11 +18,11 @@ class CreateCourseTermYearTable extends Migration
             $table->unsignedInteger('courseID');
             $table->foreign('courseID')->references('id')->on('course');
 
-            $table->unsignedInteger('term');
-            $table->foreign('term')->references('term')->on('term_year');
+            $table->unsignedInteger('term')->nullable();
+            $table->foreign('term')->references('term')->on('course_term_year');
 
-            $table->unsignedInteger('year');
-            $table->foreign('year')->references('year')->on('term_year');
+            $table->unsignedInteger('year')->nullable();
+            $table->foreign('year')->references('year')->on('course_term_year');
 
             $table->timestamps();
         });

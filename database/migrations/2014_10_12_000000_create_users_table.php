@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->string('confirmed')->nullable();
 
             $table->unsignedInteger('deptID')->nullable();
-
             $table->foreign('deptID')->references('id')->on('department');
 
             $table->integer('allowedUnit')->nullable();

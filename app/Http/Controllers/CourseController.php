@@ -118,7 +118,8 @@ class CourseController extends Controller
     }
 
     public function course_listView(){
-        return view('course.course_list');
+        $courses = Course::paginate(10);
+        return view('course.course_list',compact('courses'));
     }
 }
 

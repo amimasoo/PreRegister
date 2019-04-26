@@ -9,7 +9,7 @@
         <br>
 
             @if(Session::has('message'))
-                <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                <p class="text-right text-black-50 alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
             @endif
 
         <form action="/availableCourses" method="post">

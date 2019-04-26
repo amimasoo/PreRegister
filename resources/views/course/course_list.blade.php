@@ -3,8 +3,6 @@
 @section('content')
 
         <div class="container">
-            @php $courses = App\Course::paginate(10);
-                    @endphp
             <input id="myInput" class="form-control container" type="text" placeholder=" جستجو کنید ..." style="direction: rtl">
             <br>
             @if(Session::has('message'))
