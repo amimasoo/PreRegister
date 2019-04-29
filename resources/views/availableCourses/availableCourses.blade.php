@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="container">
-        @php $courses = App\Course::all();
-        @endphp
+
         <input id="myInput" class="form-control container" type="text" placeholder=" جستجو کنید ..." style="direction: rtl">
         <br>
 
@@ -40,15 +39,16 @@
                 @foreach($courses as $course)
                     <tr>
                         <td>{{++$loop->index}}</td>
-                        <td>{{$course->courseName}}</td>
-                        <td>{{$course->courseCode}}</td>
-                        <td>{{$course->courseUnit}}</td>
-                        <td>{{$course->deptID}}</td>
-                        <td>{{$course->courseType}}</td>
-                        <td>{{$course->courseOccupied}}</td>
+                        <td>{{$course->course->courseName}}</td>
+                        <td>{{$course->course->courseCode}}</td>
+                        <td>{{$course->course->courseUnit}}</td>
+                        <td>{{$course->course->deptID}}</td>
+                        <td>{{$course->course->courseType}}</td>
+                        <td>{{$course->course->courseOccupied}}</td>
                         <td>
-                            <div class="checkbox">
-                                <input type="checkbox" name="courseTaken[]" class="checkbox" value="{{$course->id}}">
+                            <div class="custom-control custom-checkbox">
+                                <input  type="checkbox" class="custom-control-input" id="defaultUnchecked{{$loop->index}}" value="1" name="courseTaken[]">
+                                <label class="custom-control-label" for="defaultUnchecked{{$loop->index}}"></label>
                             </div>
                         </td>
                     </tr>

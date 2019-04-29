@@ -1,8 +1,10 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Spatie\Permission\Models\Role;
 
 class CreatePermissionTables extends Migration
 {
@@ -77,6 +79,23 @@ class CreatePermissionTables extends Migration
                 ->onDelete('cascade');
 
             $table->primary(['permission_id', 'role_id']);
+
+
+
+            /** initial database */
+            Role::create(['name' => 'student']);
+
+            $user = User::create([
+                'firstName' => 'admin',
+                'email' => 'a@example.com',
+                'deptID' => '1',
+                'password' => Hash::make('111111')
+            ]);
+            $role = Role::create(['name' => 'admin']);
+            $user->assignRole($role);
+            /** initial database */
+
+
             
             app('cache')
                 ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)

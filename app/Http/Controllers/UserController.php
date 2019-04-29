@@ -117,4 +117,7 @@ class UserController extends Controller
         return view('student.student_list',['users' => $users]);
     }
 
+    public function adminPage(){
+        return view('admin.admin_page')->with(compact('term'));
+    }
 }

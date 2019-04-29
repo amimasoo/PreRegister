@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\CourseTermYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -43,7 +44,8 @@ class CourseController extends Controller
             'courseCode' => 'required|unique:course',
         ]);
 
-        Course::create([
+
+        $course = Course::create([
             'courseName' => $request['courseName'],
             'courseCode' => $request['courseCode'],
             'courseUnit' => $request['courseUnit'],
@@ -51,6 +53,17 @@ class CourseController extends Controller
             'deptID' => $request['deptID'],
             'courseOccupied'=>$request['courseOccupied'],
         ]);
+
+        $course_term_year = CourseTermYear::where('courseID',$course->id)->where('term', Session::get('term'))->where('year', Session::get('year'))->first();
+
+        if ($course_term_year == null){
+            CourseTermYear::create([
+                'courseID' => $course->id,
+                'term' => Session::get('term'),
+                'year' => Session::get('year')
+            ]);
+        }
+
 
         Session::flash('message', '.درس '.$request['courseName'].' با موفقیت اضافه شد');
         Session::flash('alert-class', 'alert-success');
@@ -108,7 +121,8 @@ class CourseController extends Controller
     {
         Session::flash('message', '.درس '.$course->courseName.' با موفقیت حذف شد');
         Session::flash('alert-class', 'alert-success');
-        $course->delete();
+//        $course->delete();
+        CourseTermYear::where('courseID', $course->id)->where('term', Session::get('term'))->where('year', Session::get('year'))->delete();
 
         return back();
     }
@@ -118,7 +132,9 @@ class CourseController extends Controller
     }
 
     public function course_listView(){
-        $courses = Course::paginate(10);
+//        $courses = Course::paginate(10);
+        $courses = CourseTermYear::with('course')->where('term', Session::get('term'))->where('year', Session::get('year'))->paginate(10);
+//        return $courses;
         return view('course.course_list',compact('courses'));
     }
 }

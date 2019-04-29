@@ -1,0 +1,35 @@
+.bg-primary2{
+    background-color: rgba(0, 123, 255, 0.3);
+}
+
+.bg-primary3{
+    background-color: rgba(0, 123, 255, 0.15);
+}
+
+.bg-primary4{
+    background-color: rgba(0, 123, 255, 0.08);
+}
+
+header, main, footer {
+    padding-right: 240px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-right: 0;
+    }
+
+}
+
+@media (min-width : 1441px){
+    .app-name{
+        padding-right: 250px!important;
+    }
+}
+
+
+@media (min-width : 993px){
+    .margin-top-100{
+        margin-top: 70px;
+    }
+}

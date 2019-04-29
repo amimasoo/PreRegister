@@ -1,0 +1,1 @@
+SELECT department.deptName, `option`.`optionName`, option_department.option_value from option_department JOIN `option` ON option_department.optionID = `option`.id JOIN department ON option_department.deptID = department.id WHERE option_department.deptID='1' 

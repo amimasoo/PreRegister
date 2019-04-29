@@ -9,6 +9,11 @@ class CourseTermYear extends Model
     protected $table = 'course_term_year';
 
     protected $fillable = [
-        'course_id','term','year'
+        'courseID','term','year'
     ];
+
+    public function course()
+    {
+        return $this->belongsTo('App\course', 'courseID');
+    }
 }

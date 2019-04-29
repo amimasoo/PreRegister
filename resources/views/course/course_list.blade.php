@@ -28,12 +28,12 @@
                 @foreach($courses as $course)
                     <tr>
                         <td>{{++$loop->index}}</td>
-                        <td>{{$course->courseName}}</td>
-                        <td>{{$course->courseCode}}</td>
-                        <td>{{$course->courseUnit}}</td>
-                        <td>{{$course->deptID}}</td>
-                        <td>{{$course->courseType}}</td>
-                        <td>{{$course->courseOccupied}}</td>
+                        <td>{{$course->course->courseName}}</td>
+                        <td>{{$course->course->courseCode}}</td>
+                        <td>{{$course->course->courseUnit}}</td>
+                        <td>{{$course->course->deptID}}</td>
+                        <td>{{$course->course->courseType}}</td>
+                        <td>{{$course->course->courseOccupied}}</td>
                         <td>
                             <span style="font-size: 23px; color: black;">
                               <a href="" style="color: black ;">
@@ -43,14 +43,14 @@
                         </td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                               <a href="edit/{{$course->id}}" style="color: black ;">
+                               <a href="edit/{{$course->course->id}}" style="color: black ;">
                                   <i class="far fa-edit"></i>
                                </a>
                              </span>
                         </td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                                <a class="deleteCourse" href="delete/{{$course->id}}" data-courseid="{{$course->id}}" id="deleteID" data-target="#myModal" data-toggle="modal" style="color: black ;">
+                                <a class="deleteCourse" href="#" data-courseid="{{$course->course->id}}" id="deleteID" data-target="#myModal" data-toggle="modal" style="color: black ;">
                                     <i class="far fa-trash-alt"></i>
                                 </a>
                              </span>

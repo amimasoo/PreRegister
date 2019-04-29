@@ -14,6 +14,7 @@ class CreateOptionDepartmentTable extends Migration
     public function up()
     {
         Schema::create('option_department', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('optionID');
             $table->foreign('optionID')->references('id')->on('option');
 

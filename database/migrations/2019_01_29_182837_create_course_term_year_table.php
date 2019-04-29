@@ -15,6 +15,7 @@ class CreateCourseTermYearTable extends Migration
     {
         Schema::create('course_term_year', function (Blueprint $table) {
 
+            $table->increments('id');
             $table->unsignedInteger('courseID');
             $table->foreign('courseID')->references('id')->on('course');
 

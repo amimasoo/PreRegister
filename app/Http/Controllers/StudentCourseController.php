@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\CourseTermYear;
 use App\StudentCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -87,7 +88,10 @@ class StudentCourseController extends Controller
     }
 
     public function availableCourseView(){
-        return view('availableCourses.availableCourses');
+
+        $courses = CourseTermYear::with('course')->where('term', Session::get('term'))->where('year', Session::get('year'))->paginate(10);
+//        return $courses;
+        return view('availableCourses.availableCourses',compact('courses'));
     }
 
     public function insertSelectedCourse(Request $request){
@@ -95,12 +99,13 @@ class StudentCourseController extends Controller
         $request = $request->all();
 //       return $request['courseTaken'];
 
-        $studentID = Auth::user();
+        $student = Auth::user();
+        $already_taken_courses = StudentCourse::where('studentID', $student['id'])->delete();
         foreach($request['courseTaken'] as $req) {
 
             StudentCourse::create([
                 'courseID' => $req,
-                'studentID' => $studentID['id'],
+                'studentID' => $student['id'],
             ]);
         }
         Session::flash('message', '.دروس مورد نظر با موفقیت اخذ شدند');

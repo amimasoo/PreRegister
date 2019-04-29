@@ -9,6 +9,6 @@ class Option extends Model
     protected $table = 'option';
 
     protected $fillable = [
-        'option_id','option_name'
+        'optionName'
     ];
 }
