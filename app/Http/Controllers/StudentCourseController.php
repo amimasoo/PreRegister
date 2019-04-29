@@ -100,12 +100,14 @@ class StudentCourseController extends Controller
 //       return $request['courseTaken'];
 
         $student = Auth::user();
-        $already_taken_courses = StudentCourse::where('studentID', $student['id'])->delete();
+        StudentCourse::where('studentID', $student['id'])->where('term',Session::get('term'))->where('year',Session::get('year'))->delete();
         foreach($request['courseTaken'] as $req) {
 
             StudentCourse::create([
                 'courseID' => $req,
                 'studentID' => $student['id'],
+                'term' => Session::get('term'),
+                'year' => Session::get('year')
             ]);
         }
         Session::flash('message', '.دروس مورد نظر با موفقیت اخذ شدند');

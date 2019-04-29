@@ -9,7 +9,7 @@ class Course extends Model
     protected $table = 'course';
 
     protected $fillable = [
-        'courseName','courseCode','courseOccupied','courseUnit','courseType','deptID'
+        'id','courseName','courseCode','courseOccupied','courseUnit','courseType','deptID'
     ];
 
     public function course_term_years()
