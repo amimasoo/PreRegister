@@ -60,7 +60,12 @@
                 </tbody>
             </table>
         </div>
-
+        <span style="font-size: 30px; float: right; padding-right: 80px">
+            <a class="btn btn-dark" href="/course/add">
+                افزودن درس جدید
+            </a>
+        </span>
+        <br><br><br>
     <div class="pagination justify-content-center">{{ $courses->links() }}</div>
 
         <!-- The Modal -->

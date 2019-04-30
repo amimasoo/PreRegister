@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-secondary">
-                <div class="card-header bg-primary text-white" style="float: right; text-align: right">اضافه کردن درس جدید</div>
+                <div class="card-header bg-primary text-white" style="float: right; text-align: right">اضافه کردن درس جدید
+                    <a class="btn float-left inline-block" href="/course/list" style="background-color: #ffffff; border-color: #006680; color: black; border: solid 1px; padding: 10px">لیست دروس
+                        {{--<i class="fas fa-arrow-circle-left float-left" style="font-size: 20px"></i>--}}
+                    </a>
+                </div>
                 <div class="card-body" style="float: right; text-align: right">
                     @if(Session::has('message'))
                         <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>

@@ -1,6 +1,7 @@
-@extends('layouts.app')
+
 
 @role('admin')
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -34,6 +35,7 @@
 
 
 @role('student')
+{{--@extends('student.studentHomePage')--}}
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
