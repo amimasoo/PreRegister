@@ -95,15 +95,15 @@
                             {{--</div>--}}
                         {{--</li>--}}
 
-                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-users"></i>مدیریت
-                                کاربران<i
-                                    class="fas fa-angle-down rotate-icon"></i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="{{ url('/users/manage') }}" class="waves-effect">سطح دسترسی ها</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                        {{--<li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-users"></i>مدیریت--}}
+                                {{--کاربران<i--}}
+                                    {{--class="fas fa-angle-down rotate-icon"></i></a>--}}
+                            {{--<div class="collapsible-body">--}}
+                                {{--<ul>--}}
+                                    {{--<li><a href="{{ url('/users/manage') }}" class="waves-effect">سطح دسترسی ها</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
                     </ul>
                 </li>
                 <!--/. Side navigation links -->

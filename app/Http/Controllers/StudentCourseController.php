@@ -89,7 +89,7 @@ class StudentCourseController extends Controller
 
     public function availableCourseView(){
 
-        $courses = CourseTermYear::with('course')->where('term', Session::get('term'))->where('year', Session::get('year'))->paginate(10);
+        $courses = CourseTermYear::with('course')->where('term', Session::get('term'))->where('year', Session::get('year'))->get();
 //        return $courses;
         return view('availableCourses.availableCourses',compact('courses'));
     }
@@ -97,22 +97,24 @@ class StudentCourseController extends Controller
     public function insertSelectedCourse(Request $request){
 
         $request = $request->all();
-//       return $request['courseTaken'];
+//        return $request['courseTaken'];
 
         $student = Auth::user();
+        $already_taken_courses = StudentCourse::where('studentID', $student['id'])->where('term',Session::get('term'))->where('year',Session::get('year'))->delete();
+
         StudentCourse::where('studentID', $student['id'])->where('term',Session::get('term'))->where('year',Session::get('year'))->delete();
         foreach($request['courseTaken'] as $req) {
 
             StudentCourse::create([
-                'courseID' => $req,
                 'studentID' => $student['id'],
+                'courseID' => $req,
                 'term' => Session::get('term'),
                 'year' => Session::get('year')
             ]);
         }
         Session::flash('message', '.دروس مورد نظر با موفقیت اخذ شدند');
         Session::flash('alert-class', 'alert-success');
-
+        compact($already_taken_courses);
         return back();
     }
 }

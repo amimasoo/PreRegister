@@ -60,7 +60,7 @@
                                         {{ __('رمز عبور خود را فراموش کرده اید؟') }}
                                     </a>
                                 @endif
-                                <button type="submit" class="btn btn-block btn-primary">
+                                <button type="submit" class="btn btn-block bg-primary">
                                     {{ __('ورود') }}
                                 </button>
                             </div>

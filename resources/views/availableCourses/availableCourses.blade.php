@@ -15,7 +15,7 @@
             @csrf
             <div class="container form-group">
                 <div class="col-md-4" style="margin: 0 auto;">
-                    <button type="submit" class="btn btn-block btn-outline-primary">
+                    <button type="submit" class="btn btn-block bg-primary">
                         {{ __('ثبت نام دروس انتخاب شده') }}
                     </button>
                 </div>
@@ -47,8 +47,11 @@
                         <td>{{$course->course->courseOccupied}}</td>
                         <td>
                             <div class="custom-control custom-checkbox">
-                                <input  type="checkbox" class="custom-control-input" id="defaultUnchecked{{$loop->index}}" value="1" name="courseTaken[]">
+
+                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked{{$loop->index}}" value="{{$course->course->id}}" name="courseTaken[]">
+
                                 <label class="custom-control-label" for="defaultUnchecked{{$loop->index}}"></label>
+
                             </div>
                         </td>
                     </tr>
@@ -58,7 +61,7 @@
 
         <div class="container form-group">
             <div class="col-md-4" style="margin: 0 auto;">
-                <button type="submit" class="btn btn-block btn-outline-primary">
+                <button type="submit" class="btn btn-block bg-primary">
                     {{ __('ثبت نام دروس انتخاب شده') }}
                 </button>
             </div>
