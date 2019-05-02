@@ -17,7 +17,7 @@
                     <th>واحد درس</th>
                     <th>گروه درس</th>
                     <th>نوع درس</th>
-                    <th>تعداد اخذ</th>
+                    {{--<th>تعداد اخذ</th>--}}
                     <th>مشاهده</th>
                     <th>ویرایش</th>
                     <th>حذف</th>
@@ -33,7 +33,7 @@
                         <td>{{$course->course->courseUnit}}</td>
                         <td>{{$course->course->deptID}}</td>
                         <td>{{$course->course->courseType}}</td>
-                        <td>{{$course->course->courseOccupied}}</td>
+{{--                        <td>{{$course->course->courseOccupied}}</td>--}}
                         <td>
                             <span style="font-size: 23px; color: black;">
                               <a href="" style="color: black ;">

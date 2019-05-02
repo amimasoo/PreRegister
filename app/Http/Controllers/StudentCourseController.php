@@ -88,10 +88,26 @@ class StudentCourseController extends Controller
     }
 
     public function availableCourseView(){
-
+        $student = Auth::user();
         $courses = CourseTermYear::with('course')->where('term', Session::get('term'))->where('year', Session::get('year'))->get();
-//        return $courses;
-        return view('availableCourses.availableCourses',compact('courses'));
+
+//        $course_count=array();
+//        $course_occupied = CourseTermYear::where('courseID',$courses)->where('term',Session::get('term'))->where('year', Session::get('year'))->get();
+//        foreach ($courses as $item){
+//            array_push($course_count, $item);
+//        }
+//        return $course_count;
+
+
+
+        $taken_courses = array();
+        $already_taken_courses = StudentCourse::select('courseID')->where('studentID', $student['id'])->where('term',Session::get('term'))->where('year',Session::get('year'))->get();
+        foreach ($already_taken_courses as $item){
+            array_push($taken_courses, $item->courseID);
+        }
+        return view('availableCourses.availableCourses',compact('courses','taken_courses'));
+//       return $taken_courses;
+//        return $already_taken_courses;
     }
 
     public function insertSelectedCourse(Request $request){
@@ -100,9 +116,9 @@ class StudentCourseController extends Controller
 //        return $request['courseTaken'];
 
         $student = Auth::user();
-        $already_taken_courses = StudentCourse::where('studentID', $student['id'])->where('term',Session::get('term'))->where('year',Session::get('year'))->delete();
 
         StudentCourse::where('studentID', $student['id'])->where('term',Session::get('term'))->where('year',Session::get('year'))->delete();
+
         foreach($request['courseTaken'] as $req) {
 
             StudentCourse::create([
@@ -114,7 +130,8 @@ class StudentCourseController extends Controller
         }
         Session::flash('message', '.دروس مورد نظر با موفقیت اخذ شدند');
         Session::flash('alert-class', 'alert-success');
-        compact($already_taken_courses);
+
         return back();
+
     }
 }

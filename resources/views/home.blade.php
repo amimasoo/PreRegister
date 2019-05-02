@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
+                <div class="card text-right">
+                    <div class="card-header">ادمین</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -16,13 +16,13 @@
 
                             </div>
                         @endif
-                        {{Session('term')}}
+                        {{Session('term')}} ترم
                         {{--{{$test}}--}}
-                            admin
+
                         <br>
-                        {{Session('year')}}
+                        {{Session('year')}} سال
                         <br>
-                        You are logged in!
+                            ادمین خوش آمدید
                     </div>
                 </div>
             </div>
@@ -40,8 +40,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
+                <div class="card text-right">
+                    <div class="card-header">دانشجو</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -56,7 +56,7 @@
                         <br>
                         {{--{{$_SESSION['year']}}--}}
                         <br>
-                        You are logged in!
+                        خوش آمدید
                     </div>
                 </div>
             </div>

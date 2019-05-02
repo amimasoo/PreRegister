@@ -30,7 +30,7 @@
                     <th>واحد درس</th>
                     <th>گروه درس</th>
                     <th>نوع درس</th>
-                    <th>تعداد اخذ</th>
+                    {{--<th>تعداد اخذ</th>--}}
                     <th>اخذ/حذف</th>
                 </tr>
                 </thead>
@@ -44,11 +44,13 @@
                         <td>{{$course->course->courseUnit}}</td>
                         <td>{{$course->course->deptID}}</td>
                         <td>{{$course->course->courseType}}</td>
-                        <td>{{$course->course->courseOccupied}}</td>
+{{--                        <td>{{$course->course->courseOccupied}}</td>--}}
                         <td>
                             <div class="custom-control custom-checkbox">
 
-                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked{{$loop->index}}" value="{{$course->course->id}}" name="courseTaken[]">
+                                <input @if(in_array($course->courseID, $taken_courses))
+                                        checked @endif
+                                       type="checkbox" class="custom-control-input" id="defaultUnchecked{{$loop->index}}" value="{{$course->course->id}}" name="courseTaken[]">
 
                                 <label class="custom-control-label" for="defaultUnchecked{{$loop->index}}"></label>
 
