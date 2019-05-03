@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\CourseTermYear;
+use App\OptionDepartment;
+use App\StudentCourse;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -104,6 +108,8 @@ class UserController extends Controller
         Session::flash('alert-class', 'alert-success');
         $user->delete();
 
+        StudentCourse::where('studentID',$user->id)->where('term',Session::get('term'))->where('year',Session::get('year'))->delete();
+
         return back();
     }
 
@@ -117,7 +123,43 @@ class UserController extends Controller
         return view('student.student_list',['users' => $users]);
     }
 
-    public function adminPage(){
-        return view('admin.admin_page')->with(compact('term'));
+    public function student_taken_courses($id){
+
+//        $student = StudentCourse::select()
+//        return $student;
+//        $courses = StudentCourse::where('studentID',$student->id)->where('term', Session::get('term'))->where('year', Session::get('year'))->get();
+
+//        return $courses;
+
+        $courses = StudentCourse::with('course')->where('studentID', $id)->where('term', Session::get('term'))->where('year', Session::get('year'))->get();
+        return view('student.taken_courses',compact('courses'));
+    }
+
+    public function admin_setting(){
+        return view('admin.admin');
+    }
+
+    public function change_setting(Request $request){
+
+        $user = Auth::user();
+        /** @var  $current_term */
+        $current_term = OptionDepartment::where('deptID',$user->deptID)->where('optionID', 1)->first();
+        $current_term->option_value = $request['term'];
+
+        $current_term->save();
+        Session::put('term', $request['term']);
+
+        /** @var  $current_year */
+        $current_year = OptionDepartment::where('deptID',$user->deptID)->where('optionID', 2)->first();
+        $current_year->option_value = $request['year'];
+
+        $current_year->save();
+        Session::put('year',$request['year']);
+
+
+        Session::flash('message', '.ترم '.$request->term.' و سال '.$request->year.' با موفقیت ثبت شد');
+        Session::flash('alert-class', 'alert-success');
+
+        return back();
     }
 }

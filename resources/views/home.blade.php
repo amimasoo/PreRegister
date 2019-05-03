@@ -16,11 +16,19 @@
 
                             </div>
                         @endif
-                        {{Session('term')}} ترم
-                        {{--{{$test}}--}}
+                            <div class="form-group row mb-0">
+                                <div class="col-sm-8">
 
-                        <br>
-                        {{Session('year')}} سال
+                                    <button disabled class="btn" style="direction: rtl; background-color: #3f5c80;">
+                                        سال{{Session('year')}}
+                                    </button>
+
+                                    <button disabled class="btn" style="direction: rtl; background-color: #3f5c80;">
+                                        ترم{{Session('term')}}
+                                    </button>
+                                </div>
+                                <label for="currentTerm_currentYear" class="col-sm-4 col-form-label text-md-right" style="float: right; text-align: right">{{ __('ترم و سال جاری') }}</label>
+                            </div>
                         <br>
                             ادمین خوش آمدید
                     </div>

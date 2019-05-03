@@ -41,6 +41,72 @@
 <body class="fixed-sn light-blue-skin" style="padding-left: 0">
 <div id="app">
     <header>
+
+        @role('admin')
+
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav sn-bg-4 fixed">
+
+            <ul class="custom-scrollbar">
+                <!-- Logo -->
+                <li>
+                    <div class="logo-wrapper ">
+                        <a href="{{ url('/home') }}"><img src="{{asset('images/big-logo.png')}}"
+                                                          class=" flex-center"></a>
+                    </div>
+                </li>
+                <!--/. Logo -->
+                <!--Social-->
+                <!--/Social-->
+                <!-- Side navigation links -->
+                <li style="margin-top: 100px; border-top: 1px solid rgba(255,255,255,0.65);">
+                    <ul class="collapsible collapsible-accordion">
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-book"></i>
+                                درس
+                                ها
+                                <i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{ url('/course/add') }}"
+                                           class="waves-effect">{{ __(' اضافه کردن درس جدید ') }}</a>
+                                    </li>
+                                    <li><a href="{{ url('/course/list') }}" class="waves-effect">مشاهده‌ی لیست درس ‌ها</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-user-graduate"></i>
+                                دانشجو ها<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    {{--<li><a href="{{ url('/forums/add') }}" class="waves-effect">اضافه کردن انجمن ها</a>--}}
+                                    {{--</li>--}}
+                                    <li><a href="{{ url('/student/list') }}" class="waves-effect">مشاهده‌ی لیست دانشجو ‌ها</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-cog"></i>
+                                تنظیمات<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    {{--<li><a href="{{ url('/forums/add') }}" class="waves-effect">اضافه کردن انجمن ها</a>--}}
+                                    {{--</li>--}}
+                                    <li><a href="{{ url('/admin/setting') }}" class="waves-effect">تغییر سال و ترم جاری</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
+            <div class="sidenav-bg mask-strong"></div>
+        </div>
+        <!--/. Sidebar navigation -->
+        @endrole
+
+        @role('student')
         <!-- Sidebar navigation -->
         <div id="slide-out" class="side-nav sn-bg-4 fixed">
 
@@ -59,51 +125,18 @@
                 <li style="margin-top: 100px; border-top: 1px solid rgba(255,255,255,0.65);">
                     <ul class="collapsible collapsible-accordion">
                         <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-university"></i>
-                                درس
-                                ها
+                                انتخاب واحد
                                 <i class="fas fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="{{ url('/course/add') }}"
-                                           class="waves-effect">{{ __(' اضافه کردن درس جدید ') }}</a>
+                                    <li><a href="{{ url('/availableCourses') }}"
+                                           class="waves-effect">{{ __(' دروس ارائه شده ی نیمسال ') }}</a>
                                     </li>
-                                    <li><a href="{{ url('/course/list') }}" class="waves-effect">مشاهده‌ی لیست درس ‌ها</a>
-                                    </li>
+                                    {{--<li><a href="{{ url('/course/list') }}" class="waves-effect">مشاهده‌ی لیست درس ‌ها</a>--}}
+                                    {{--</li>--}}
                                 </ul>
                             </div>
                         </li>
-                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-synagogue"></i>
-                                دانشجو ها<i class="fas fa-angle-down rotate-icon"></i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    {{--<li><a href="{{ url('/forums/add') }}" class="waves-effect">اضافه کردن انجمن ها</a>--}}
-                                    {{--</li>--}}
-                                    <li><a href="{{ url('/student/list') }}" class="waves-effect">مشاهده‌ی لیست دانشجو ‌ها</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        {{--<li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-book"></i> طرح ها<i--}}
-                                    {{--class="fas fa-angle-down rotate-icon"></i></a>--}}
-                            {{--<div class="collapsible-body">--}}
-                                {{--<ul>--}}
-                                    {{--<li><a href="{{ url('/projects/add') }}" class="waves-effect">اضافه کردن طرح ها</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li><a href="{{ url('/projects') }}" class="waves-effect">مشاهده طرح ها</a>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
-
-                        {{--<li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-users"></i>مدیریت--}}
-                                {{--کاربران<i--}}
-                                    {{--class="fas fa-angle-down rotate-icon"></i></a>--}}
-                            {{--<div class="collapsible-body">--}}
-                                {{--<ul>--}}
-                                    {{--<li><a href="{{ url('/users/manage') }}" class="waves-effect">سطح دسترسی ها</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
                     </ul>
                 </li>
                 <!--/. Side navigation links -->
@@ -111,6 +144,7 @@
             <div class="sidenav-bg mask-strong"></div>
         </div>
         <!--/. Sidebar navigation -->
+        @endrole
         <!-- Navbar -->
         <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav"
              style="padding-left: 0">

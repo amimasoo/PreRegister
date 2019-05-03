@@ -30,7 +30,7 @@
                 <th>شماره دانشجويي</th>
                 {{--<th>شماره گروه</th>--}}
                 {{--<th>سال ورود</th>--}}
-                <th>تعداد واحد هاي اخذ شده</th>
+                <th>تعداد درس هاي اخذ شده</th>
                 {{--<th>مجاز</th>--}}
                 <th>مشاهده</th>
                 <th>ویرایش</th>
@@ -48,11 +48,14 @@
                     <td>{{$student->studentID}}</td>
                     {{--<td>{{$row->dept_id}}</td>--}}
                     {{--<td>{{$row->entry_year}}</td>--}}
-                    <td>{{$student->takenUnitsNumber}}</td>
+                    @php
+                        $occupied = App\StudentCourse::where('studentID', $student->id)->where('term', Session::get('term'))->where('year', Session::get('year'))->get()->count();
+                    @endphp
+                    <td>{{$occupied}}</td>
                     {{--<td>{{$row->confirmed}}</td>--}}
                     <td>
                         <span style="font-size: 23px; color: black;">
-                            <a href="" style="color: black ;">
+                            <a href="taken_courses/{{$student->id}}" style="color: black ;">
                                 <i class="far fa-address-card"></i>
                             </a>
                         </span>

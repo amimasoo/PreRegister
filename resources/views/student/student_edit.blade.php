@@ -5,7 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card border-secondary">
-                    <div class="card-header bg-primary text-white" style="float: right;text-align: right">{{ __('ویرایش دانشجو') }}</div>
+                    <div class="card-header bg-primary text-white" style="float: right;text-align: right">{{ __('ویرایش دانشجو') }}
+                        <a class="btn float-left inline-block" href="/student/list" style="background-color: #ffffff; border-color: #006680; color: black; border: solid 1px; padding: 10px">لیست دانشجویان</a>
+                    </div>
                     <div class="card-body" style="float: right; text-align: right">
                         @if(Session::has('message'))
                             <p class="text-right alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
@@ -78,7 +80,7 @@
                             </div>
                             <div class="form-group row mb-0">
                                 <div  class="col-md-8">
-                                    <button type="submit" class="btn btn-block btn-primary">
+                                    <button type="submit" class="btn btn-block bg-primary">
                                         {{ __('ثبت تغییرات') }}
                                     </button>
                                 </div>

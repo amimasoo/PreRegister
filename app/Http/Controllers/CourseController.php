@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\CourseTermYear;
+use App\StudentCourse;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -132,10 +134,25 @@ class CourseController extends Controller
     }
 
     public function course_listView(){
-//        $courses = Course::paginate(10);
+
         $courses = CourseTermYear::with('course')->where('term', Session::get('term'))->where('year', Session::get('year'))->paginate(10);
-//        return $courses;
         return view('course.course_list',compact('courses'));
+    }
+
+    public function related_students($course_id)
+    {
+//        $students = Course::with('students')->where('id', $course_id)->wherePivot('term', Session::get('term'))->get();
+//        $students = $course->students()->wherePivot('term', Session::get('term'))->get();
+//            $result = Course::whereHas('students', function ($q) {
+//                $q->where('term', Session::get('term'))->where('year', Session::get('year'));
+//            })->where('id', $course_id)->get();
+        $students = DB::select(DB::raw("SELECT
+             users.firstName, users.lastName , users.studentID , users.entryYear
+             FROM `student_course` JOIN users ON student_course.studentID=users.id 
+            WHERE term='".Session::get('term')."' AND year='".Session::get('year')."' AND student_course.courseID=$course_id"));
+
+        return view('course.students_by_course',compact('students'));
+//        return $students;
     }
 }
 
