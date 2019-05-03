@@ -61,7 +61,7 @@
                 <!-- Side navigation links -->
                 <li style="margin-top: 100px; border-top: 1px solid rgba(255,255,255,0.65);">
                     <ul class="collapsible collapsible-accordion">
-                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-book"></i>
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-book-open"></i>
                                 درس
                                 ها
                                 <i class="fas fa-angle-down rotate-icon"></i></a>
