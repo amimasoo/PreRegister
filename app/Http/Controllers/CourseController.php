@@ -66,7 +66,6 @@ class CourseController extends Controller
             ]);
         }
 
-
         Session::flash('message', '.درس '.$request['courseName'].' با موفقیت اضافه شد');
         Session::flash('alert-class', 'alert-success');
         return back();
@@ -123,8 +122,10 @@ class CourseController extends Controller
     {
         Session::flash('message', '.درس '.$course->courseName.' با موفقیت حذف شد');
         Session::flash('alert-class', 'alert-success');
-//        $course->delete();
+        $course->delete();
+
         CourseTermYear::where('courseID', $course->id)->where('term', Session::get('term'))->where('year', Session::get('year'))->delete();
+        StudentCourse::where('courseID', $course->id)->where('term', Session::get('term'))->where('year', Session::get('year'))->delete();
 
         return back();
     }

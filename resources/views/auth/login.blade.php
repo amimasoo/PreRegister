@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="box-shadow: 5px 10px 35px #3e3e3e;">
                 <div class="card-header bg-primary text-white" style="float: right; text-align: right">{{ __('ورود') }}</div>
 
                 <div class="card-body" style="float: right; text-align: right">

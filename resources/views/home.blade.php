@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card text-right">
-                    <div class="card-header">ادمین</div>
+                    <div class="card-header">پنل ادمین</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -49,7 +49,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card text-right">
-                    <div class="card-header">دانشجو</div>
+                    <div class="card-header ">پنل دانشجو</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -58,11 +58,6 @@
 
                             </div>
                         @endif
-                        {{--{{$_SESSION['term']}}--}}
-                        {{--{{$test}}--}}
-                        student
-                        <br>
-                        {{--{{$_SESSION['year']}}--}}
                         <br>
                         خوش آمدید
                     </div>

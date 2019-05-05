@@ -4,9 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card border-secondary">
+            <div class="card" style="box-shadow: 5px 10px 35px #3e3e3e;">
                 <div class="card-header bg-primary text-white" style="float: right; text-align: right">اضافه کردن درس جدید
-                    <a class="btn float-left inline-block" href="/course/list" style="background-color: #ffffff; border-color: #3f5c80; color: black; border: solid 1px; padding: 10px">لیست دروس</a>
                 </div>
                 <div class="card-body" style="float: right; text-align: right">
                     @if(Session::has('message'))
@@ -74,15 +73,15 @@
                                     </span>
                                 @endif
                             </div>
-                            <lable for="courseType" class="col-md-4 col-form-label" style="float: right;text-align: right">نوع درس</lable>
+                            <label for="courseType" class="col-md-4 col-form-label text-md-right" style="float: right;text-align: right">{{ __('نوع درس') }}</label>
                         </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-8">
                                 <button type="submit" class="btn btn-block bg-primary">
                                     {{ __('ثبت درس') }}
                                 </button>
                             </div>
+                            <a class="btn btn-block col-md-3" href="/course/list" style="background-color: #4285f4; padding: 10px; margin-left: 30px">لیست دروس</a>
                         </div>
 
                         @if($errors->any())

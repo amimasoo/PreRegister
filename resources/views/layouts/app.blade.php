@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+{{--    <title>{{ config('app.name', 'preregister') }}</title>--}}
+    <title>سامانه ی پیش ثبت نام</title>
 
     <!-- Scripts -->
 
@@ -178,7 +179,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 
-                            <a class="dropdown-item" href="/users/account">
+                            <a class="dropdown-item" href="#">
                                 مشاهده ی حساب کاربری
                             </a>
 
