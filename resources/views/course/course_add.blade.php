@@ -6,9 +6,7 @@
         <div class="col-md-8">
             <div class="card border-secondary">
                 <div class="card-header bg-primary text-white" style="float: right; text-align: right">اضافه کردن درس جدید
-                    <a class="btn float-left inline-block" href="/course/list" style="background-color: #ffffff; border-color: #006680; color: black; border: solid 1px; padding: 10px">لیست دروس
-                        {{--<i class="fas fa-arrow-circle-left float-left" style="font-size: 20px"></i>--}}
-                    </a>
+                    <a class="btn float-left inline-block" href="/course/list" style="background-color: #ffffff; border-color: #3f5c80; color: black; border: solid 1px; padding: 10px">لیست دروس</a>
                 </div>
                 <div class="card-body" style="float: right; text-align: right">
                     @if(Session::has('message'))
@@ -66,7 +64,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-8">
-                                <select name="courseType" id="courseType" class="form-control{{ $errors->has('courseType') ? ' is-invalid' : '' }}"  style="text-align: right;direction: rtl" title="عملی/نظری">
+                                <select name="courseType" id="courseType" class="custom-select form-control{{ $errors->has('courseType') ? ' is-invalid' : '' }}"  style="text-align: right;direction: rtl" title="عملی/نظری">
                                     <option value="نظری">نظری</option>
                                     <option value="عملی">عملی</option>
                                 </select>

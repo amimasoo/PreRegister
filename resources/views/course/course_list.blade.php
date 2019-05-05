@@ -17,7 +17,7 @@
                     <th>واحد درس</th>
                     <th>گروه درس</th>
                     <th>نوع درس</th>
-                    {{--<th>تعداد اخذ</th>--}}
+                    <th>تعداد اخذ</th>
                     <th>مشاهده</th>
                     <th>ویرایش</th>
                     <th>حذف</th>
@@ -33,10 +33,13 @@
                         <td>{{$course->course->courseUnit}}</td>
                         <td>{{$course->course->deptID}}</td>
                         <td>{{$course->course->courseType}}</td>
-{{--                        <td>{{$course->course->courseOccupied}}</td>--}}
+                        @php
+                            $occupied = App\StudentCourse::where('courseID', $course->course->id)->where('term', Session::get('term'))->where('year', Session::get('year'))->get()->count();
+                        @endphp
+                        <td>{{$occupied}}</td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                              <a href="" style="color: black ;">
+                              <a href="students/{{$course->course->id}}" style="color: black ;">
                                 <i class="far fa-address-card"></i>
                               </a>
                              </span>
@@ -61,7 +64,7 @@
             </table>
         </div>
         <span style="font-size: 30px; float: right; padding-right: 80px">
-            <a class="btn btn-dark" href="/course/add">
+            <a class="btn" href="/course/add" style="background-color: #3f5c80;">
                 افزودن درس جدید
             </a>
         </span>

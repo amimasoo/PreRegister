@@ -15,10 +15,11 @@
             html, body{
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Nunito', sans-serif, 'B Yekan';
+                /*font-family: 'Nunito', sans-serif, 'B Yekan';*/
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                font-family: BYekan, 'BYekan', tahoma;
             }
 
             .full-height {

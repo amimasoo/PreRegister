@@ -16,4 +16,14 @@ class Course extends Model
     {
         return $this->hasMany('App\CourseTermYear');
     }
+
+    public function studentCourses()
+    {
+        return $this->hasMany('App\StudentCourse');
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany('App\User', 'student_course', 'courseID', 'studentID');
+    }
 }

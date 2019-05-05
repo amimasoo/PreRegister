@@ -11,4 +11,9 @@ class StudentCourse extends Model
     protected $fillable = [
         'studentID','courseID','term','year'
     ];
+    public function course()
+    {
+        return $this->belongsTo('App\course', 'courseID');
+    }
+
 }
