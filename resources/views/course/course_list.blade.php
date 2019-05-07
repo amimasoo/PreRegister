@@ -62,12 +62,13 @@
                 @endforeach
                 </tbody>
             </table>
+            <div class="row" style="font-size: 30px; float: right; padding-right: 10px;">
+                <a class="btn col" href="/course/add" style="background-color: #3f5c80;">
+                    افزودن درس جدید
+                </a>
+            </div>
         </div>
-        <div style="font-size: 30px; float: right; padding-right: 10px;">
-            <a class="btn" href="/course/add" style="background-color: #3f5c80;">
-                افزودن درس جدید
-            </a>
-        </div>
+
         <br><br><br>
     <div class="pagination justify-content-center">{{ $courses->links() }}</div>
 

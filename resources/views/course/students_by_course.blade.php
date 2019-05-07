@@ -40,8 +40,8 @@
         </tbody>
     </table>
 
-        <div  style="font-size: 30px; float: right; margin-right: -5px;">
-            <a class="btn "  href="/course/list" style="background-color: #3f5c80;">
+        <div class="row" style="font-size: 30px; float: right; margin-right: -5px;">
+            <a class="btn row"  href="/course/list" style="background-color: #3f5c80;">
                 بازگشت به لیست درس ها
             </a>
         </div>

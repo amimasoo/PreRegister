@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card border-secondary">
                     <div class="card-header bg-primary text-white" style="float: right;text-align: right">{{ __('ویرایش دانشجو') }}
-                        <a class="btn float-left inline-block" href="/student/list" style="background-color: #ffffff; border-color: #006680; color: black; border: solid 1px; padding: 10px">لیست دانشجویان</a>
+
                     </div>
                     <div class="card-body" style="float: right; text-align: right">
                         @if(Session::has('message'))
@@ -84,6 +84,7 @@
                                         {{ __('ثبت تغییرات') }}
                                     </button>
                                 </div>
+                                <a class="btn btn-block col-md-3" href="/student/list" style="background-color: #4285f4; padding: 10px; margin-left: 30px">لیست دانشجویان</a>
                             </div>
                         </form>
                         @if($errors->any())

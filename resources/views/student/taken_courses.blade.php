@@ -36,12 +36,12 @@
             @endforeach
             </tbody>
         </table>
-    </div>
-
-        <div style="font-size: 30px; float: right; padding-right: 10px;">
-            <a class="btn "  href="/student/list" style="background-color: #3f5c80;">
+        <div class="row" style="font-size: 30px; float: right; padding-right: 10px;">
+            <a class="btn col"  href="/student/list" style="background-color: #3f5c80;">
                 بازگشت به لیست دانشجویان
             </a>
-
+        </div>
     </div>
+
+
     @endsection
