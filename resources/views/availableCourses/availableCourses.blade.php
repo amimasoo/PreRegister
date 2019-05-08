@@ -37,7 +37,8 @@
                 <tbody id="myTable">
 
                 @foreach($courses as $course)
-                    <tr>
+                    <tr @if(in_array($course->courseID, $taken_courses))
+                        class="table-success" @endif>
                         <td>{{++$loop->index}}</td>
                         <td>{{$course->course->courseName}}</td>
                         <td>{{$course->course->courseCode}}</td>
