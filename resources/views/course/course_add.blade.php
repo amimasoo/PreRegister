@@ -15,7 +15,7 @@
                         @csrf
                         <div class="form-group row">
                             <div class="col-md-8">
-                                <input name="courseName" id="courseName" class="form-control{{ $errors->has('courseName') ? ' is-invalid' : '' }}" type="text" style="text-align: right" title="نام درس">
+                                <input required name="courseName" id="courseName" class="form-control{{ $errors->has('courseName') ? ' is-invalid' : '' }}" type="text" style="text-align: right" title="نام درس">
                                 @if ($errors->has('courseName'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('courseName') }}</strong>
@@ -28,7 +28,7 @@
                         <div class="form-group row">
 
                             <div class="col-md-8">
-                                <input name="courseCode" id="courseCode" class="form-control{{ $errors->has('courseCode') ? ' is-invalid' : '' }}" type="number" style="text-align: right" title="کد درس">
+                                <input required name="courseCode" id="courseCode" class="form-control{{ $errors->has('courseCode') ? ' is-invalid' : '' }}" type="number" style="text-align: right" title="کد درس">
                                 @if ($errors->has('courseCode'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('courseCode') }}</strong>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-8">
-                                <input name="courseUnit" id="courseUnit" class="form-control{{ $errors->has('courseUnit') ? ' is-invalid' : '' }}" type="number" style="text-align: right" title="واحد درس">
+                                <input required name="courseUnit" id="courseUnit" class="form-control{{ $errors->has('courseUnit') ? ' is-invalid' : '' }}" type="number" style="text-align: right" title="واحد درس">
                                 @if ($errors->has('courseUnit'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('courseUnit') }}</strong>
@@ -51,7 +51,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-8">
-                                <input name="deptID" id="deptID" class="form-control{{ $errors->has('deptID') ? ' is-invalid' : '' }}" type="number" style="text-align: right" title="شماره گروه">
+                                <input required name="deptID" id="deptID" class="form-control{{ $errors->has('deptID') ? ' is-invalid' : '' }}" type="number" style="text-align: right" title="شماره گروه">
                                 @if ($errors->has('deptID'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('deptID') }}</strong>

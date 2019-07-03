@@ -31,8 +31,6 @@
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>--}}
     <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 
-
-
     <style>body {
             font-family: BYekan, 'BYekan', tahoma;
         }</style>
@@ -223,5 +221,10 @@
 <script src="{{asset('js/mdb.min.js')}}"></script>
 {{--<script src="{{asset('js/chart.js')}}"></script>--}}
 <script src="{{asset('js/custom.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('.mdb-select').materialSelect();
+    });
+</script>
 
 </html>

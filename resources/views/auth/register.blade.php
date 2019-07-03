@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8"  style="margin-left: 200px">
             <div class="card" style="box-shadow: 5px 10px 35px #3e3e3e;">
                 <div class="card-header bg-primary text-white" style="float: right;text-align: right">{{ __('ثبت نام') }}</div>
 

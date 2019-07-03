@@ -2,9 +2,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header bg-primary text-white" style="float: right; text-align: right">{{ __('ورود') }}</div>
+                    <div class="card-header bg-primary text-white" style="float: right; text-align: right">{{ __('تغییر ترم و سال') }}</div>
 
                     <div class="card-body" style="float: right; text-align: right">
                         <form method="POST" action="/admin/setting">
